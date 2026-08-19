@@ -1068,11 +1068,18 @@ final class OEGameDocument: NSDocument {
     }
     
     @objc private func windowDidResignMain(_ notification: Notification) {
-        let backgroundPause = UserDefaults.standard.bool(forKey: OEBackgroundPauseKey)
-        if backgroundPause && emulationStatus == .playing {
-            requestEmulationPauseRespectingRetroAchievementsHardcore { [weak self] paused in
-                if paused {
-                    self?.pausedByGoingToBackground = true
+        // Deferred a turn so the incoming main window has been established:
+        // this fires before the new window takes over, so asking who is main
+        // right now would always come back empty.
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+
+            let backgroundPause = UserDefaults.standard.bool(forKey: OEBackgroundPauseKey)
+            if backgroundPause && self.emulationStatus == .playing {
+                self.requestEmulationPauseRespectingRetroAchievementsHardcore { [weak self] paused in
+                    if paused {
+                        self?.pausedByGoingToBackground = true
+                    }
                 }
             }
         }
