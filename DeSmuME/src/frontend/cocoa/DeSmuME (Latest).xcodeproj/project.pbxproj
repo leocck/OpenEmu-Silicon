@@ -11721,6 +11721,8 @@
 					"$(SRCROOT)/../../../../Vendor/rcheevos/src",
 					"$(SRCROOT)/../../../../OpenEmuKit/Source",
 				);
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				INFOPLIST_FILE = "openemu/Info (OpenEmu Plug-in).plist";
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;

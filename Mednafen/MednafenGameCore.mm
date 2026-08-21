@@ -39,6 +39,7 @@
 #import <OpenEmuBase/OERingBuffer.h>
 #import <OpenEmuBase/OEMemoryRegionDescriptor.h>
 #import <OpenEmuBase/OEGameCoreDisplayModes.h>
+#import <OpenEmuBase/OEMemoryRegionDescriptor.h>
 #import <OpenGL/gl.h>
 #import "OELynxSystemResponderClient.h"
 #import "OENGPSystemResponderClient.h"
