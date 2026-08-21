@@ -1,5 +1,6 @@
 module rcheevos {
     umbrella header "rcheevos.h"
+    config_macros RC_CLIENT_SUPPORTS_HASH
     
     module rapi {
         module rc_api_editor {
@@ -31,7 +32,7 @@ module rcheevos {
     }
     
     module rc_client {
-        header "rc_client.h"
+        textual header "rc_client.h"
         export *
     }
     
