@@ -38,9 +38,12 @@ The code format you enter has to match what the system's emulator core understan
 | **Game Boy Advance** | GameShark / Action Replay (handled by mGBA) | varies — see Game Boy Advance code databases |
 | **Genesis / Mega Drive / Master System / Game Gear / Sega CD / SG-1000** | Game Genie, Action Replay | `RYGA-A6X4` |
 | **Nintendo DS** | Action Replay | varies — see DS code databases |
-| **ColecoVision** | Raw hex patches | varies |
+| **ColecoVision** | Raw hex patches (`ADDRESS:VALUE`) | `73B8:03` |
 | **Atari 2600** | Raw hex patches (`ADDRESS:VALUE`) | `80:FF` |
 | **PlayStation** | GameShark (12 hex chars: type byte + address + value) | `80097BA0 270F` |
+| **Saturn** | Action Replay (`TAAAAAAA VVVV`, 12 hex chars), raw hex (`ADDRESS:VALUE`) | `1060785C 270F` |
+| **Atari Lynx / Neo Geo Pocket / PC Engine / PC Engine CD / PC-FX / Virtual Boy / WonderSwan** | Raw hex patches (`ADDRESS:VALUE`) | `0080:FF` |
+| **Arcade** | Raw hex patches (`ADDRESS:VALUE`) | `C80B:63` |
 
 Multi-line cheats can be joined with `+` for any system. For example: `code1+code2+code3`.
 
@@ -97,7 +100,9 @@ Cheat Codes / Search is available for the following systems.
 
 | System | Core |
 |--------|------|
+| Arcade | MAME |
 | Atari 2600 | Stella |
+| Atari Lynx | Mednafen |
 | ColecoVision | CrabEmu |
 | Famicom Disk System | Nestopia |
 | Game Boy | Gambatte |
@@ -106,15 +111,22 @@ Cheat Codes / Search is available for the following systems.
 | Game Gear | GenesisPlus |
 | Genesis / Mega Drive | GenesisPlus |
 | Master System | GenesisPlus |
+| Neo Geo Pocket | Mednafen |
 | NES / Famicom | FCEU |
 | NES / Famicom | Nestopia |
 | Nintendo 64 | Mupen64Plus |
 | Nintendo DS | DeSmuME |
+| PC Engine / TurboGrafx-16 | Mednafen |
+| PC Engine CD / TurboGrafx-CD | Mednafen |
+| PC-FX | Mednafen |
 | PlayStation | Mednafen |
+| Saturn | Mednafen |
 | Sega CD | GenesisPlus |
 | SG-1000 | GenesisPlus |
 | SNES / Super Famicom | BSNES |
 | SNES / Super Famicom | SNES9x |
+| Virtual Boy | Mednafen |
+| WonderSwan | Mednafen |
 
 ---
 
@@ -125,22 +137,22 @@ The following systems do not have a cheat menu in OpenEmu-Silicon (yet). The **C
 | System |
 |--------|
 | 3DO |
-| Arcade |
+| Atari 5200 |
 | Atari 7800 |
-| Atari Lynx |
+| Atari 8-bit |
+| Atari Jaguar |
+| Dreamcast |
 | GameCube |
 | Intellivision |
-| Neo Geo Pocket / Neo Geo Pocket Color |
 | Odyssey² |
-| PC Engine / TurboGrafx-16 |
-| PC Engine CD / TurboGrafx-CD |
-| PC-FX |
+| MSX |
+| PlayStation Portable |
+| Pokemon Mini |
 | Sega 32X |
 | Sega Dreamcast |
-| Sega Saturn |
-| Virtual Boy |
+| Vectrex |
+| Watara Supervision |
 | Wii |
-| WonderSwan / WonderSwan Color |
 
 ---
 
@@ -168,6 +180,25 @@ When using any external source, make sure you're using codes for the correct **r
 - **No effect, no error.** If a code looks "enabled" in the menu but isn't doing anything in-game, the most likely cause is a format mismatch — the core silently skips codes it can't parse. Double-check that the code matches the format in the table above.
 - **Search is limited to 1.000 results.** This is to prevent UI freeze. Refine your search to narrow down the results.
 - **RetroAchievements Restriction.** Cheats will be disabled if you play in Hardcore Mode. Achievements will still be triggered if you use cheats if Hardcore Mode is disabled, but they will be marked as "Soft" in RetroAchievements.
+
+---
+
+## Arcade (MAME) Built-In Cheats
+
+On top of OpenEmu's Cheat Code and Cheat Search support, MAME comes with a built-in cheat engine and a bundled cheat database covering thousands of arcade games.
+
+### How to see built-in cheats
+
+1. Launch an arcade game in OpenEmu.
+2. Open the Cheats menu (Configure button > Cheats).
+3. If your game has entries in the MAME cheat database, they appear as toggleable options — just like OpenEmu's built-in cheats for other systems.
+4. Toggle any cheat on or off. Effects are immediate.
+
+### Notes
+
+- The bundled cheat database is included with the MAME core and updated alongside it.
+- You do not need to download or configure anything extra — cheats are available out of the box for supported games.
+- Not every arcade game has cheat entries. Coverage is limited to the embedded version of the MAME cheat database (0.255). You can still use OpenEmu's Add Cheat and/or Cheat Search if your game does not come with a bundled cheat code.
 
 ---
 
